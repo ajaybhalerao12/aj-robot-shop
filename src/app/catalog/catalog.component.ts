@@ -10,7 +10,7 @@ import { IProduct } from './product.model';
   styleUrl: './catalog.component.css'
 })
 export class CatalogComponent {
-  products: IProduct[] ;
+  products: any ;
   filter:string = '';
 
   constructor() {
@@ -192,11 +192,18 @@ export class CatalogComponent {
   }
 
   getImageUrl(product: IProduct):string{
+    if(!product){
+      return '';
+    }
+
     return `/images/robot-parts/${product.imageName}`;
   }
 
   getFilteredProducts():IProduct[]{
-    return this.products.filter((product) => product.category.toLowerCase().includes(this.filter.toLowerCase()));
+    if(this.filter === ''){
+      return this.products;
+    }
+    return this.products.filter((product:any) => product.category.toLowerCase().includes(this.filter.toLowerCase()));
   }
 }
 
