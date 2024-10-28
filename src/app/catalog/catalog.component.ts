@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IProduct } from './product.model';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { CartService } from '../cart.service';
 @Component({
   selector: 'app-catalog',
   standalone: true,
@@ -12,9 +13,9 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 export class CatalogComponent {
   products: any;
   filter: string = '';
-  cart:IProduct[] = [];
+  // private cartSvc: CartService = inject(CartService); // This line is added to the constructor
 
-  constructor() {
+  constructor(private cartSvc: CartService) {
     this.products = [
       {
         id: 1,
@@ -193,8 +194,8 @@ export class CatalogComponent {
   }
 
   addToCart(product: IProduct) {
-    this.cart.push(product);
     console.log(`Product with id ${product.id} added to cart`);
+    this.cartSvc.add(product);
   }
 
   getFilteredProducts(): IProduct[] {
