@@ -1,3 +1,15 @@
+a{
+  font-weight: bold;
+}
+.strikethrough{
+  text-decoration: line-through;
+  font-size: 18;
+}
+
+.bold{
+  font-weight: bold;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -75,5 +87,5 @@
 }
 .discount{
   margin-top: -15px;
-  color: red;
+  color: #d25ca1;
 }

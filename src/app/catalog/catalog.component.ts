@@ -191,6 +191,16 @@ export class CatalogComponent {
     ];
   }
 
+
+getDiscountedClasses(product: IProduct): string|string[]|Set<string>|{ [klass: string]: any; }|null|undefined {
+  if(product.discount > 0){
+    return ['strikethrough']
+  }else{
+    return '';
+  }
+  // return { strikethrough: product.discount > 0};
+  }
+
   getImageUrl(product: IProduct):string{
     if(!product){
       return '';
