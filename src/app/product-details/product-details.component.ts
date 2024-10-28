@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../catalog/product.model';
 import { CommonModule } from '@angular/common';
 
@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+  styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent {
-  @Input() product!:IProduct;
+  @Input() product!: IProduct;
+  @Output() buyProduct = new EventEmitter();
 
   getImageUrl(product: IProduct): string {
     if (!product) {
@@ -32,10 +33,10 @@ export class ProductDetailsComponent {
     } else {
       return '';
     }
-    // return { strikethrough: product.discount > 0};
   }
 
-  addToCart(product: IProduct): void {
+  buyProductClicked(product: IProduct): void {
     console.log(`Product ${product.name} added to cart`);
+    this.buyProduct.emit();
   }
 }

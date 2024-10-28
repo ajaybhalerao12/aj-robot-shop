@@ -197,8 +197,6 @@ export class CatalogComponent {
     console.log(`Product with id ${product.id} added to cart`);
   }
 
-
-
   getFilteredProducts(): IProduct[] {
     if (this.filter === '') {
       return this.products;

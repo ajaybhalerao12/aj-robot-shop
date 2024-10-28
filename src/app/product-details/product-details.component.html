@@ -1,6 +1,6 @@
 <div class="product">
   <div class="product-details">
-    <img [src]="getImageUrl(product)" [alt]="product?.imageName" />
+    <img [src]="getImageUrl(product)" [alt]="product.imageName" />
     <!-- <input type="text" [value]="product.name" /> -->
     <div class="product-info">
       <div class="name red">{{ product.name }}</div>
@@ -20,6 +20,6 @@
     <div *ngIf="product.discount > 0" class="discount">
       {{ product.price * (1 - product.discount) | currency : "USD" }}
     </div>
-    <button class="cta" (click)="addToCart(product)">Buy</button>
+    <button class="cta" (click)="buyProductClicked(product)">Buy</button>
   </div>
 </div>
