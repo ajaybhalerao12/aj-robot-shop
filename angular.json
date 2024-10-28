@@ -62,7 +62,8 @@
               "buildTarget": "aj-robot-shop:build:production"
             },
             "development": {
-              "buildTarget": "aj-robot-shop:build:development"
+              "buildTarget": "aj-robot-shop:build:development",
+              "proxyConfig": "src/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"
