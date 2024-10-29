@@ -43,7 +43,7 @@ export class CatalogComponent implements OnInit {
     if (this.filter === '') {
       return this.products;
     }
-    return this.products.filter((product: any) =>
+    return this.products?.filter((product: any) =>
       product.category.toLowerCase().includes(this.filter.toLowerCase())
     );
   }
