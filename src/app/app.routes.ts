@@ -5,8 +5,13 @@ import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: "Home - AJ's Robo Shop" },
+  // {
+  //   path: 'catalog/:filter',
+  //   component: CatalogComponent,
+  //   title: "Catalog - AJ's Robo Shop",
+  // },
   {
-    path: 'catalog/:filter',
+    path: 'catalog',
     component: CatalogComponent,
     title: "Catalog - AJ's Robo Shop",
   },

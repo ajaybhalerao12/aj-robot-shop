@@ -5,11 +5,11 @@ import { IProduct } from './product.model';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ProductService } from './product.service';
 import { CartService } from '../cart/cart.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, ProductDetailsComponent, RouterLink],
+  imports: [CommonModule, ProductDetailsComponent, RouterLink,RouterLinkActive],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css',
 })
@@ -28,7 +28,10 @@ export class CatalogComponent implements OnInit {
       this.products = products;
     });
     // this.filter = this.route.snapshot.params['filter'] || '';
-    this.route.params.subscribe((params) => {
+    // this.route.params.subscribe((params) => {
+    //   this.filter = params['filter'] || '';
+    // });
+    this.route.queryParams.subscribe((params) => {
       this.filter = params['filter'] || '';
     });
   }
