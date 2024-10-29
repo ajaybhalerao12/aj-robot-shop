@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
 import { CartComponent } from "./cart/cart.component";
+import { TemplateFormControlsComponent } from './user/template-form-controls/template-form-controls.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { CartComponent } from "./cart/cart.component";
     HomeComponent,
     CatalogComponent,
     SiteHeaderComponent,
-    CartComponent
+    CartComponent,
+    TemplateFormControlsComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
