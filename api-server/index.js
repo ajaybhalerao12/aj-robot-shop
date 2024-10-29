@@ -5,6 +5,27 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+
+/*
+  IMPORTANT:
+    ***NEVER*** store credentials unencrypted like this.
+    This is for demo purposes only in order to simulate a functioning API serverr.
+*/
+const users = {
+  "ajaybhalerao12@gmail.com": {
+    firstName: "Ajay",
+    lastName: "Bhalerao",
+    email: "ajaybhalerao12@gmail.com",
+    password: "Test@123",
+  },
+  "deepakchikane@gmail.com": {
+    firstName: "Deepak",
+    lastName: "Chikane",
+    email: "deepakchikane@gmail.com",
+    password: "Test@123",
+  },
+};
+
 let cart = [];
 
 app.get('/', (req, res) => {
@@ -196,6 +217,43 @@ app.get("/api/products", (req, res) => {
   ];
   res.send(products);
 });
+
+
+app.post("/api/register", (req, res) =>
+  setTimeout(() => {
+    const user = req.body;
+    if (user.firstName && user.lastName && user.email && user.password) {
+      users[user.email] = user;
+      res.status(201).send({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      });
+    } else {
+      res.status(500).send("Invalid user info");
+    }
+  }, 800)
+);
+
+/* IMPORTANT:
+    The code below is for demo purposes only and does not represent good security
+    practices. In a production application user credentials would be cryptographically
+    stored in a database server and the password should NEVER be stored as plain text.
+*/
+app.post("/api/sign-in", (req, res) => {
+  const user = users[req.body.email];
+  if (user && user.password === req.body.password) {
+    res.status(200).send({
+      userId: user.userId,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+    });
+  } else {
+    res.status(401).send("Invalid user credentials.");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
